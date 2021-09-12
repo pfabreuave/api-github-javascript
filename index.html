@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="estilosa.css">
+	<title>API GitHub</title>
+	<script>
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const varUser = urlParams.get('user');
+		//alert("User" + varUser);
+
+	</script>
+</head>
+<body>
+	<form>
+				<div id="avatar"> </div>
+				<h3 id=nombre ></h3>
+				<h2 class="title">Repositorio do GitHub</h2>
+					<input 
+						type="text" 
+						class="userInput" 
+						id="usergh"				
+						placeholder="Buscar usuario"
+					/>
+					<input 
+						type="button"
+						class="searchButton" 
+						value="Buscar" 
+						onclick="buscarGH()"
+					/>			
+	</form>
+	<header>
+		 <div class="img">
+		 </div> 
+		
+		<div id="contenido"></div>
+	</header>
+<script type="text/javascript">
+	function buscarGH() {
+		contenido.innerHTML = ' '
+		var usergh = document.getElementById("usergh");
+		var urlu = "https://api.github.com/users/" + usergh.value;
+		fetch(urlu, {method: 'GET'})
+    		.then(function(response) {
+        	if (!response.ok) {
+            	throw Error(response.statusText);
+        	}
+        	return response.json();
+    		})
+			.then(function(users) {
+				avatar.innerHTML +=`<img  class= imagen src =${users.avatar_url} alt='imagen Avatar'/>`
+				nombre.innerHTML +=`<h3>  ${users.name} </h3>`	 	
+    		})
+			.catch(function(error) {
+				avatar.innerHTML +=`<img  class=imgerr src='img/DaniGoogle.png'>`
+				nombre.innerHTML +=`<h3 class='title'>  Usuário ${usergh.value} não encontrado, por favor tente outro </h3>`	
+    		});
+
+		var url = "https://api.github.com/users/" + usergh.value + "/repos";
+		fetch(url, {method: 'GET'})
+			.then(function(response){
+				return response.json()
+			})
+			.then(function(data){
+				 var cont = 0
+				 console.log(data) 
+				 for(cont=0;cont<data.length;cont++){	
+				 	contenido.innerHTML +=` <div class="card">
+					<a href="${data[cont].html_url}" target="blank_">  ${data[cont].name} </a>
+ 					</div>`
+				}
+			})
+		avatar.innerHTML = ' '
+		nombre.innerHTML = ' '
+	}
+	  function actualizar(){location.reload(true);}
+
+	  document.getElementById('usergh').value = varUser;
+</script>
+</body>
+</html>
