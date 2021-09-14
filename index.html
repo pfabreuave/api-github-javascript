@@ -56,7 +56,7 @@
 				nombre.innerHTML +=`<h3 class='title'>  Usuário ${usergh.value} não encontrado, por favor tente outro </h3>`	
     		});
 
-		var url = "https://api.github.com/users/" + usergh.value + "/repos";
+		var url = "https://api.github.com/users/" + usergh.value + "/repos?per_page=100";
 		fetch(url, {method: 'GET'})
 			.then(function(response){
 				return response.json()
