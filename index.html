@@ -50,6 +50,7 @@
 			.then(function(users) {
 				avatar.innerHTML +=`<img  class= imagen src =${users.avatar_url} alt='imagen Avatar'/>`
 				nombre.innerHTML +=`<h3>  ${users.name} </h3>`	 	
+				nombre.innerHTML +=`<h3>  ${users.public_repos} Repositorios publicos</h3>`	 	
     		})
 			.catch(function(error) {
 				avatar.innerHTML +=`<img  class=imgerr src='img/DaniGoogle.png'>`
