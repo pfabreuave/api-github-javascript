@@ -13,7 +13,9 @@
 </head>
 <body>
 	<form>
-				<div id="avatar"> </div>
+				<div id="avatar"> 
+					<img  class= imagen src ="img/DaniGoogle.png" alt='imagen Avatar'/>`
+				</div>
 				<h3 id=nombre ></h3>
 				<h2 class="title">Repositorio do GitHub</h2>
 					<input 
@@ -35,7 +37,30 @@
 		
 		<div id="contenido"></div>
 	</header>
+	
+	<div id="main">
+		<table class="tabla" id="tabla">
+			
+			<tbody class="centrado">
+		</table>
+	</div>	
+
 <script type="text/javascript">
+	var j = 0;
+	var i = 0;
+	var cols = ['#AA55AA', //Violet Blue
+				'#FF3030', //Red Orange
+				'#ffff00', //Yellow
+				'#3cff00', //Harlequin
+				'#f8c046', 
+				'#c39263', 
+				'#006400', //Dark Green
+				'#ff8000', //Dark Orange
+				'#ff5050', //Sunset Orange
+				'#905050', //grayish red
+				'#401010'  //Seal Brown
+			];
+
 	function buscarGH() {
 		contenido.innerHTML = ' '
 		var usergh = document.getElementById("usergh");
@@ -53,7 +78,7 @@
 				nombre.innerHTML +=`<h3>  ${users.public_repos} Repositorios publicos</h3>`	 	
     		})
 			.catch(function(error) {
-				avatar.innerHTML +=`<img  class=imgerr src='img/DaniGoogle.png'>`
+				avatar.innerHTML +=`<img  class=imgerr src='img/pare.jpg'>`
 				nombre.innerHTML +=`<h3 class='title'>  Usuário ${usergh.value} não encontrado, por favor tente outro </h3>`	
     		});
 
@@ -64,16 +89,25 @@
 			})
 			.then(function(data){
 				 var cont = 0
-				 console.log(data) 
 				 for(cont=0;cont<data.length;cont++){
+					
 					if (data[cont].homepage != null){
-						contenido.innerHTML +=` <div class="card">
-						<a href="${data[cont].html_url}" target="blank_">${data[cont].name} (GitPage)</a>
+						i = j%10
+						contenido.innerHTML +=` 
+						<div class="card">
+							<a href="${data[cont].html_url}" target="blank_">${data[cont].name} (GitPage)</a>
  						</div>`
+						tabla.innerHTML +=` 
+						<div class="campo_polo">
+							<a href="${data[cont].homepage}" target="blank_" id="registro_${cont}" >  URL GitPage ====>   ${data[cont].homepage}</a>
+ 						</div>`
+						document.getElementById('registro_'+cont).style.backgroundColor=cols[i];
+						 j++
 					}
 					else{
-				 		contenido.innerHTML +=` <div class="card">
-						<a href="${data[cont].html_url}" target="blank_"> ${data[cont].name} </a>
+				 		contenido.innerHTML +=` 
+						<div class="card">
+							<a href="${data[cont].html_url}" target="blank_"> ${data[cont].name} </a>
  						</div>`
 					}
 					 
@@ -81,6 +115,7 @@
 			})
 		avatar.innerHTML = ' '
 		nombre.innerHTML = ' '
+		tabla.innerHTML = ' '
 	}
 	  function actualizar(){location.reload(true);}
 

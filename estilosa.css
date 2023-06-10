@@ -28,8 +28,11 @@ html{
 
 }
 header {
-  height: auto;
-  background-position: center center;
+	height: auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
  
 }
 .contenedor{
@@ -39,9 +42,11 @@ header {
 	justify-content: center;
 }
 div{
+	
 	display: flex;
 	justify-content: space-between;
-	flex-wrap: wrap;	
+	flex-wrap: wrap;
+		
 }
 div a{
 	text-decoration: none;
@@ -64,9 +69,6 @@ body{
 	background: #fff;
 	bottom: 0;
 	color: #000;
-	/*
-	color: #444;
-	*/
 	font-size: 18px;
 	border-radius: 25px;
   }
@@ -78,11 +80,6 @@ body{
 	margin-left: 15px;
 	background-color:  #00ffff;
 	color: #000;
-	/*
-	background: #e61c83;
-	
-	color: #fff;
-	*/
 	border: 0;
 	font-size: 20px;
 	font-weight: bold;
@@ -93,9 +90,7 @@ body{
 .title {
 	font-weight: 700;
 	color:  #00ffff;
-	/*
-	color: #e61c83;
-	*/
+	
   }
   
   .card{
@@ -103,9 +98,6 @@ body{
 	align-content: center;
 	color: #444;
 	background-color:  #00ffff;
-	/*
-	background-color:  rgba(255, 105, 180, 0.8);
-	*/
 	width: 260px;
 	height: 80px;
 	border-radius: 12px;
@@ -138,9 +130,7 @@ body{
 .title {
 	font-weight: 700;
 	color:  #00ffff;
-	/*
-	color: #e61c83;
-	*/
+	
   }
 .userInput {
 	flex: 1;
@@ -149,9 +139,6 @@ body{
 	background: #fff;
 	bottom: 0;
 	color: #000;
-	/*
-	color: #444;
-	*/
 	font-size: 18px;
 	border-radius: 25px;
   }
@@ -163,11 +150,6 @@ body{
 	margin-left: 15px;
 	background-color:  #00ffff;
 	color: #000;
-	/*
-	background: #e61c83;
-	
-	color: #fff;
-	*/
 	border: 0;
 	font-size: 20px;
 	font-weight: bold;
@@ -179,5 +161,29 @@ body{
 	margin: auto;
 	text-align: center;
   } 
-   
+
   
+.centrado{	
+	text-align:center;
+	border:1px dotted #000;
+	padding: 8px;
+	color:#000000;
+	font-size:13px;
+	font-weight: 500;
+	line-height:21px;	
+}
+
+
+.campo_polo{
+	text-align: left;
+	font-size:23px;
+	padding: 6px;
+	
+}
+
+#main{	
+	width: 700px; 	
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
