@@ -178,6 +178,9 @@ body{
 	text-align: left;
 	font-size:23px;
 	padding: 6px;
+	border: 5px solid #00ffff;
+  	height: 100%;
+  	width: 700px;
 	
 }
 
