@@ -50,7 +50,7 @@ div{
 }
 div a{
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.68;
 	color: #000;
@@ -99,7 +99,7 @@ body{
 	color: #444;
 	background-color:  #00ffff;
 	width: 260px;
-	height: 80px;
+	height: 110px;
 	border-radius: 12px;
 	border: solid 2px #444;
 	margin: 10px auto;	
@@ -190,3 +190,9 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.peq{
+	width: 230px; height: 45px;
+	font-size: 40px;
+	
+  }

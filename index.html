@@ -95,11 +95,12 @@
 						i = j%10
 						contenido.innerHTML +=` 
 						<div class="card">
-							<a href="${data[cont].html_url}" target="blank_">${data[cont].name} (GitPage)</a>
+							<a href="${data[cont].homepage}" target="blank_"><img class=peq src="img/githubpages.png" alt=" "</a>
+							<a href="${data[cont].html_url}" target="blank_">${data[cont].name}</a>
  						</div>`
 						tabla.innerHTML +=` 
 						<div class="campo_polo">
-							<a href="${data[cont].homepage}" target="blank_" id="registro_${cont}" >  URL GitPage ====>   ${data[cont].homepage}</a>
+							<a href="${data[cont].homepage}" target="blank_" id="registro_${cont}" >GitPage ==>   ${data[cont].homepage}</a>
  						</div>`
 						document.getElementById('registro_'+cont).style.backgroundColor=cols[i];
 						 j++
