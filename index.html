@@ -1,68 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="estilosa.css">
-	<title>API GitHub</title>
-	<script>
-		const queryString = window.location.search;
-		const urlParams = new URLSearchParams(queryString);
-		const varUser = urlParams.get('user');
-		//alert("User" + varUser);
-
-	</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilosa.css">
 </head>
 <body>
 	<form>
-				<div id="avatar"> 
-					<img  class= imagen src ="img/DaniGoogle.png" alt='imagen Avatar'/>`
-				</div>
-				<h3 id=nombre ></h3>
-				<h2 class="title">Repositorio do GitHub</h2>
-					<input 
-						type="text" 
-						class="userInput" 
-						id="usergh"				
-						placeholder="Buscar usuario"
-					/>
-					<input 
-						type="button"
-						class="searchButton" 
-						value="Buscar" 
-						onclick="buscarGH()"
-					/>			
-	</form>
-	<header>
-		 <div class="img">
-		 </div> 
-		
-		<div id="contenido"></div>
-	</header>
-	
-	<div id="main">
-		<table class="tabla" id="tabla">
-			
-			<tbody class="centrado">
-		</table>
-	</div>	
-
+				
+		<div id="avatar"> 
+			<img  class= imagen src ="img/DaniGoogle.png" alt='imagen Avatar'/>`
+		</div>
+		<h3 id=nombre ></h3>
+		<h2 class="title">Repositorios GitHub</h2>
+			<input 
+				type="text" 
+				class="userInput" 
+				id="usergh"				
+				placeholder="Buscar usuario"
+			/>
+			<input 
+				type="button"
+				class="searchButton" 
+				value="Buscar" 
+				onclick="buscarGH()"
+			/>			
+</form>
+    <header>
+       <div id="contenido"></div>
+   </header>
 <script type="text/javascript">
-	var j = 0;
-	var i = 0;
-	var cols = ['#AA55AA', //Violet Blue
-				'#FF3030', //Red Orange
-				'#ffff00', //Yellow
-				'#3cff00', //Harlequin
-				'#f8c046', 
-				'#c39263', 
-				'#006400', //Dark Green
-				'#ff8000', //Dark Orange
-				'#ff5050', //Sunset Orange
-				'#905050', //grayish red
-				'#401010'  //Seal Brown
-			];
 
-	function buscarGH() {
-		contenido.innerHTML = ' '
+function buscarGH() {
+	contenido.innerHTML = ' '
 		var usergh = document.getElementById("usergh");
 		var urlu = "https://api.github.com/users/" + usergh.value;
 		fetch(urlu, {method: 'GET'})
@@ -74,8 +46,16 @@
     		})
 			.then(function(users) {
 				avatar.innerHTML +=`<img  class= imagen src =${users.avatar_url} alt='imagen Avatar'/>`
-				nombre.innerHTML +=`<h3>  ${users.name} </h3>`	 	
-				nombre.innerHTML +=`<h3>  ${users.public_repos} Repositorios publicos</h3>`	 	
+				nombre.innerHTML +=`<h3 class="title2">  ${users.name} </h3>`	 	
+				nombre.innerHTML +=`<h3 class="title2">  ${users.public_repos} Repositorios publicos</h3>`
+				nombre.innerHTML +=
+				`
+
+				<a class="userInput" href='https://pfabreuave.github.io/GitHub_Flow/?user=${usergh.value}' target="blank_">
+					Followers: ${users.followers} Following: ${users.following}
+				</a>
+
+				`	 	
     		})
 			.catch(function(error) {
 				avatar.innerHTML +=`<img  class=imgerr src='img/pare.jpg'>`
@@ -91,42 +71,52 @@
 				 var cont = 0
 				 for(cont=0;cont<data.length;cont++){
 					
-					if (data[cont].homepage != null){
-						i = j%10
-						contenido.innerHTML +=` 
-						<div class="card">
-							<a href="${data[cont].homepage}" target="blank_"><img class=peq src="img/githubpages.png" alt=" "</a>
-							<a href="${data[cont].html_url}" target="blank_">${data[cont].name}</a>
- 						</div>`
-						tabla.innerHTML +=` 
-						<div class="campo_polo">
-							<a href="${data[cont].homepage}" target="blank_" id="registro_${cont}" >
-							   <img class=maspeq src="img/githubpages.png"> ${data[cont].homepage} _STATUS = ${data[cont].has_pages}</a>
- 						</div>`
-						document.getElementById('registro_'+cont).style.backgroundColor=cols[i];
-						 j++
+					if (data[cont].language == "C#"){
+						data[cont].language = "CSharp"
+					}
+					if (data[cont].homepage != null && data[cont].homepage != ""){
+						contenido.innerHTML +=
+						` 
+						<section class="container basis-numero-container">
+							<div>
+	                        	<div class="interior">
+									<a href="https://es.wikipedia.org/wiki/${data[cont].language}" target="blank_">
+		                        	<img class="maspeq" src="img/${data[cont].language}.png">
+	                        	</div>
+	                        	<div class="interior">
+                                	<a href="${data[cont].homepage}" target="blank_">
+		                        	<img  class="maspeq" src="img/githubpages.png">
+	                        	</div>
+							</div>
+	                        <div class="item basis-600-grow-1">
+                                <a class="peq" href="${data[cont].html_url}" target="blank_">${data[cont].name}</a>
+                            </div>
+						</section>
+                        
+                        `
 					}
 					else{
-				 		contenido.innerHTML +=` 
-						<div class="card">
-							<a href="${data[cont].html_url}" target="blank_"> ${data[cont].name} </a>
- 						</div>`
+				 		contenido.innerHTML +=
+						` 
+                         <section class="container basis-numero-container">
+	                        <div class="interior">
+								<a href="https://es.wikipedia.org/wiki/${data[cont].language}" target="blank_">
+		                        <img class="maspeq"  src="img/${data[cont].language}.png">
+	                        </div>
+	                        <div class="item basis-600-grow-1">
+                                <a class="peq"  href="${data[cont].html_url}" target="blank_">${data[cont].name}</a>
+                            </div>
+                        </section>
+						
+                        `
 					}
 					 
 				}
 			})
 		avatar.innerHTML = ' '
 		nombre.innerHTML = ' '
-		tabla.innerHTML = ' '
-	}
-	  function actualizar(){location.reload(true);}
-
-	  document.getElementById('usergh').value = varUser;
-	 
-	  if (varUser > " ") {
-		buscarGH();
-	  }
-	 
+		}		
 </script>
+
 </body>
 </html>

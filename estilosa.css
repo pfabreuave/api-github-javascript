@@ -19,186 +19,241 @@ https://www.color-hex.com/color/00ffff
 		font-size: 12px;
 		flex-direction: column;
 	  }
-
-  }
-html{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-
-}
-header {
-	height: auto;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
- 
-}
-.contenedor{
-	flex-direction: column;
-	display: flex;
-	width: 100vw;
-	justify-content: center;
-}
-div{
+	}
+	.basis-auto {
+		flex-grow: 1;
+		flex-basis: auto;
+	}
 	
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	/* O espaço distribuído é 2 vezes maior que o flex-grow: 1; */
+	.basis-auto-grow-2 {
+		flex-grow: 2;
+		flex-basis: auto;
+	}
+	
+	/* É o mesmo espaço distribuido que os demais itens com flex-grow: 1; Porém esse espaço inicia após os 60px iniciais */
+	.basis-auto-width {
+		flex-grow: 1;
+		flex-basis: auto;
+		width: 60px;
+	}
+	
+	/* Com o flex-grow: 0; nada é distribuído */
+	.basis-auto-grow-0 {
+		flex-basis: auto;
+	}
+	
+	.container.overlay {
+		margin-top: 10px;
+	}
+	
+	.overlay .basis-auto::before, .overlay .basis-auto-grow-2::before, .overlay .basis-auto-width::before {
+		content: '';
+		display: block;
+		width: 16px;
+		height: 36px;
+		background: blue;
+		position: absolute;
+		opacity: .5;
+	}
+	
+	.overlay .basis-auto-grow-2::before {
+		border-right: 16px solid blueviolet;
+	}
+	
+	.overlay .basis-auto-width::before {
+		border-right: 30px solid;
+	}
+	
+	/* FLEX BASIS AUTO FIM */
+	
+	/* FLEX BASIS 0 */
+	
+	/* Com o flex-basis 0, itens com flex-grow 1 tentam ficar com o mesmo tamanho total de width. É por isso que o mais comum é utilizar flex-basis 0 */
+	.basis-0 {
+		flex-grow: 1;
+		flex-basis: 0;
+	}
+	
+	/* O tamanho total é de duas vezes dos itens com flex: 1; */
+	.basis-0-grow-2 {
+		flex-grow: 2;
+		flex-basis: 0;
+	}
+	
+	/* A definição do width é ignorada. Porém ele ainda respeita a definição de min-width. */
+	.basis-0-width {
+		flex-grow: 1;
+		flex-basis: 0;
+		width: 120px;
+		min-width: 80px;
+	}
+	
+	/* Flex basis 0 com flex-grow 0, não influenciar em nada no item. Assim o mesmo fica do tamanho do seu conteúdo. */
+	.basis-0-grow-0 {
+		flex-basis: 0;
+	}
+	
+	.overlay .basis-0::before, .overlay .basis-0-grow-2::before, .overlay .basis-0-width::before {
+		content: '';
+		display: block;
+		width: 65px;
+		height: 36px;
+		background: blue;
+		position: relative;
+		opacity: .5;
+	}
+	
+	.overlay .basis-0-grow-2::before {
+		border-right: 65px solid blueviolet;
+	}
+	
+	/* FLEX BASIS 0 FIM */
+	
+	.basis-numero-container {
+		flex-wrap: wrap;
 		
-}
-div a{
-	text-decoration: none;
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 1.68;
-	color: #000;
-	transition: 0.5s;	
-}
-body{ 	
-	text-align: center;
-	display: flex;
-	flex-direction: column;	
-	background-color: #1f4242;
-}
-.userInput {
-	flex: 1;
-	height: 32px;
-	padding: 0 40px;
-	background: #fff;
-	bottom: 0;
-	color: #000;
-	font-size: 18px;
-	border-radius: 25px;
-  }
-  
-  .searchButton {
-	width: 150px;
-	height: 42px;
-	padding: 10px;
-	margin-left: 15px;
-	background-color:  #00ffff;
-	color: #000;
-	border: 0;
-	font-size: 20px;
-	font-weight: bold;
-	border-radius: 25px;
-	cursor: pointer;
-  }
-  
-.title {
-	font-weight: 700;
-	color:  #00ffff;
+	}
 	
-  }
-  
-  .card{
-	justify-content: center;
-	align-content: center;
-	color: #444;
-	background-color:  #00ffff;
-	width: 260px;
-	height: 110px;
-	border-radius: 12px;
-	border: solid 2px #444;
-	margin: 10px auto;	
-  	border: none;
-	line-height: 1;  
-}
-
-.card:hover{
-  background-color: #29d8d8;
-  box-shadow: 3px 3px 15px   #3d8181;
-  border: none;
-}
-
-.imagen {
-	width: 20%;
-	border-radius: 100%;
-	display:block;
-	margin:auto;
-  } 
- 
-.imgerr {
-	width: 250px; height: 250px;
-	border-radius: 100%;
-	display:block;
-	margin:auto;
-}  
- 
-.title {
-	font-weight: 700;
-	color:  #00ffff;
+	.basis-110 {
+		flex-basis: 110px;
+	}
 	
-  }
-.userInput {
-	flex: 1;
-	height: 32px;
-	padding: 0 40px;
-	background: #fff;
-	bottom: 0;
-	color: #000;
-	font-size: 18px;
-	border-radius: 25px;
-  }
-  
-.searchButton {
-	width: 150px;
-	height: 42px;
-	padding: 10px;
-	margin-left: 15px;
-	background-color:  #00ffff;
-	color: #000;
-	border: 0;
-	font-size: 20px;
-	font-weight: bold;
-	border-radius: 25px;
-	cursor: pointer;
-  } 
-  
-.formContainer {
-	margin: auto;
-	text-align: center;
-  } 
-
-  
-.centrado{	
-	text-align:center;
-	border:1px dotted #000;
-	padding: 8px;
-	color:#000000;
-	font-size:13px;
-	font-weight: 500;
-	line-height:21px;	
-}
-
-
-.campo_polo{
-	text-align: left;
-	font-size:23px;
-	padding: 6px;
-	border: 5px solid #00ffff;
-  	height: 100%;
-  	width: 700px;
+	.basis-300 {
+		flex-basis: 300px;
+	}
 	
-}
-
-#main{	
-	width: 700px; 	
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.peq{
-	width: 230px; height: 45px;
-	font-size: 40px;
+	.basis-110-porcento {
+		flex-basis: calc(25% - 10px);
+	}
 	
-  }
-
-  .maspeq{
-	width: 80px; height: 30px;
-	font-size: 40px;
+	.basis-110-grow-1 {
+		flex-grow: 1;
+		flex-basis: 110px;
+	}
 	
-  }
+	/* O Flex-basis não ultrapassa o tamanho do container. Pois por padrão o flex-shrink é 1, ou seja, ele permite que o item se ajuste para caber no container. */
+	.basis-600-grow-1 {
+		flex-grow: 1;
+		flex-basis: 600px;
+	}
+	
+	/* ESTILOS GERAIS */
+	
+	.item {
+		margin: 10px;
+		background: #00ffff;;
+		text-align: center;
+		font-size: 1em;
+		/* position: relative; */
+		border-radius: 12px;
+		line-height: 15px;
+		/* text-overflow:ellipsis;
+		white-space:nowrap; */
+	}
+	
+	/* Flex Container */
+	.container {
+		
+		background: rgb(147, 184, 155);
+		margin: 5px 5px;	
+		display: inline-block; width: 200px; height: 80px;
+		border: 1px solid rgba(3, 31, 3, 0.945);
+		text-align: center;
+		border-radius: 12px;
+		
+	}
+	
+	.interior{
+	
+		display: inline-block; width: 95px; height: 35px;
+	}
+	
+	img {
+		display: block;
+		max-width: 50%;
+		margin: 10px auto;
+	}
+	
+	h1 {
+		text-align: center;
+		margin: 20px 0 0 0;
+		font-size: 1.25em;
+		font-weight: normal;
+	}
+	
+	body {
+		font-family: monospace;
+		color: #333;
+		background-color: #1f4242;
+	
+		text-align: center;
+		display: flex;
+		flex-direction: column;	
+		/* background-color: #1f4242; */
+		
+	}
+	
+	.maspeq{
+		width: 45px; height: 30px;
+		
+	  }
+	
+	.peq{
+		font-size: 12px;
+	  }
+	
+	
+	
+	  .grid-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-gap: 1em;
+	  }
+	
+	  .userInput {
+		flex: 1;
+		height: 32px;
+		padding: 0 40px;
+		background: #fff;
+		bottom: 0;
+		color: #000;
+		font-size: 18px;
+		border-radius: 25px;
+	  }
+	  
+	  .searchButton {
+		width: 150px;
+		height: 42px;
+		padding: 10px;
+		margin-left: 15px;
+		background-color:  #00ffff;
+		color: #000;
+		border: 0;
+		font-size: 20px;
+		font-weight: bold;
+		border-radius: 25px;
+		cursor: pointer;
+	  }
+	
+	  
+	.imagen {
+		width: 20%;
+		border-radius: 100%;
+		display:block;
+		margin:auto;
+	  } 
+	 
+	  
+	.title {
+		font-weight: 700;
+		color:  #00ffff;
+		
+	  }
+	
+	.title2 {
+		/* font-weight: 700; */
+		color:  #000f;
+		line-height: 1px;
+		
+	  }
