@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<!-- <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilosa.css">
@@ -53,7 +54,7 @@ function buscarGH() {
         	return response.json();
     		})
 			.then(function(users) {
-				avatar.innerHTML +=`<img  class= imagen src =${users.avatar_url} alt='imagen Avatar'/>`
+				avatar.innerHTML +=`<img  class = imagen src =${users.avatar_url} alt='imagen Avatar'/>`
 				nombre.innerHTML +=`<h3 class="title2">  ${users.name} </h3>`	 	
 				nombre.innerHTML +=`<h3 class="title2">  ${users.public_repos} Repositorios publicos</h3>`
 				nombre.innerHTML +=
@@ -93,7 +94,7 @@ function buscarGH() {
 	                        	</div>
 	                        	<div class="interior">
                                 	<a href="${data[cont].homepage}" target="blank_">
-		                        	<img  class="maspeq" src="img/githubpages.png">
+		                        	<img  class="maspeq" src="img/boton_de_encendido.jpg">
 	                        	</div>
 							</div>
 	                        <div class="item basis-600-grow-1">
