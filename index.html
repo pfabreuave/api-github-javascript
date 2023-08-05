@@ -19,8 +19,14 @@
 <body>
 	<form>
 				
-		<div id="avatar"> 
-			<img  class= imagen src ="img/DaniGoogle.png" alt='imagen Avatar'/>`
+		<div id="avatar-container">
+			<div id="avatar">
+				<img class="imagen" src="img/DaniGoogle.png" alt="imagen Avatar" />
+			</div>
+			<div id="repos-language">
+				<!-- Aquí se insertará la nueva imagen -->
+				<!-- https://github.com/vn7n24fzkq/github-profile-summary-cards -->
+			</div>
 		</div>
 		<h3 id=nombre ></h3>
 		<h2 class="title">Repositorios GitHub</h2>
@@ -54,7 +60,14 @@ function buscarGH() {
         	return response.json();
     		})
 			.then(function(users) {
-				avatar.innerHTML +=`<img  class = imagen src =${users.avatar_url} alt='imagen Avatar'/>`
+				document.getElementById("avatar-container").innerHTML = `
+        			<div id="avatar">
+            			<img class="imagen" src="${users.avatar_url}" alt="imagen Avatar" />
+        			</div>
+        			<div id="repos-language">
+            			<img class="imagen3" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?&username=pfabreuave&theme=gruvbox" alt="Repos por lenguaje" />
+        			</div>
+    			`;
 				nombre.innerHTML +=`<h3 class="title2">  ${users.name} </h3>`	 	
 				nombre.innerHTML +=`<h3 class="title2">  ${users.public_repos} Repositorios publicos</h3>`
 				nombre.innerHTML +=
